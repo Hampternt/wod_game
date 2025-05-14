@@ -2,6 +2,12 @@ pub mod data_types {
     pub mod human;
     pub mod basic_stats; 
 }
+
+pub mod helper_functions {
+    pub mod dice_mechanics;
+}
+
+
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 #[tauri::command]
 fn greet(name: &str) -> String {
