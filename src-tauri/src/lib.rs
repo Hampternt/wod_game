@@ -1,5 +1,6 @@
 pub mod data_types {
-   pub mod human; 
+    pub mod human;
+    pub mod basic_stats; 
 }
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 #[tauri::command]
