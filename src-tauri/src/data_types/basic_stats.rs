@@ -1,5 +1,19 @@
-// Basic structs for basic standard human sheet with stats.
+pub struct BasicTrackStats {
+    health: i32,
+    willpower: i32,
+}
 
+impl BasicTrackStats {
+    pub fn health(&self) -> i32 {
+        self.health
+    }
+
+    pub fn set_health(&mut self, new_health: i32) {
+        self.health = new_health;
+    } 
+}
+
+// Basic structs for basic standard human sheet with stats.
 pub struct BasicBioInfo {
     pub name: String,
     pub known_name: String,
