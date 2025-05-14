@@ -11,6 +11,14 @@ impl BasicTrackStats {
     pub fn set_health(&mut self, new_health: i32) {
         self.health = new_health;
     } 
+
+    pub fn willpower(&self) -> i32 {
+        self.willpower
+    } 
+
+    pub fn set_willpower(&mut self, new_willpower: i32) {
+        self.willpower = new_willpower; 
+    }
 }
 
 // Basic structs for basic standard human sheet with stats.
