@@ -1,30 +1,31 @@
-use std::io::stdin;
+pub fn dice_roller_function(amount_of_dice: Option<i32>, dice_type: Option<i32>) -> Vec<DiceTemplate> {
+    let amount = amount_of_dice.unwrap_or(1);
+    let dice_t = dice_type.unwrap_or(10);
 
-pub fn dice_roller() {
-    let dice: i32 = 3;
-    let sides: i32 = 8;
-}
-
-fn throw_dice(number_dice: i32, dice_sides: i32) -> Vec<i32> {
-    let mut dice_rolled: Vec<i32> = Vec::new();
-    let mut input_read: String = stdin().read_line(&mut input_read);
+    let mut counter: i32 = 0;
+    let mut dice_rolled: Vec<DiceTemplate> = Vec::new();
+    loop {
+        dice_rolled.push(roll_dice(dice_t));
+        counter += 1;
+        if counter >= amount {
+            break;
+        }
+    }
 
     dice_rolled
 }
 
+pub fn roll_dice(_dice_sides: i32) -> DiceTemplate {
 
-#[derive(Default)]
-struct SelectorFormat {
-    amount_of_dice: i32,
-    difficulty: i32,
-    type_of_dice: i32,
-    successes_needed: i32,
+    DiceTemplate {
+        dice_type: 3,
+        roll_number: 1,
+        successes: 1,
+    }
 }
 
-
-fn dice_selector_formater() -> SelectorFormat {
-    let mut format_value: SelectorFormat = SelectorFormat::default();
-
-    format_value
+pub struct DiceTemplate {
+    dice_type: i32,
+    roll_number: i32,
+    successes: i32,
 }
-

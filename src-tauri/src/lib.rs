@@ -15,33 +15,13 @@ fn greet(name: &str) -> String {
 }
 
 #[tauri::command]
-fn dice_roller(amount_of_dice: &i32) -> Vec<DiceTemplate> {
-    let mut counter: i32 = 0;
-    let mut dice_rolled: Vec<DiceTemplate> = Vec::new();
-    loop {
-        dice_rolled.push(roll_dice());
-        counter += 1;
-        if counter >= *amount_of_dice {
-            break;
-        }
-    }
+fn roll_the_dice(amount_of_dice: Option<i32>, dice_type: Option<i32>) -> Vec<DiceTemplate> {
+    let amount = amount_of_dice.unwrap_or(1);
+    let dice_t = dice_type.unwrap_or(10);  
 
-    dice_rolled
+    dice_roller_function(amount,dice_t)
 }
 
-fn roll_dice() -> DiceTemplate {
-    DiceTemplate {
-        dice_type: 3,
-        roll_number: 1,
-        successes: 1,
-    }
-}
-
-pub struct DiceTemplate {
-    dice_type: i32,
-    roll_number: i32,
-    successes: i32,
-}
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
