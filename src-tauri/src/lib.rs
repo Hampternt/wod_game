@@ -7,6 +7,8 @@ pub mod helper_functions {
     pub mod dice_mechanics;
 }
 
+use crate::helper_functions::dice_mechanics::DiceTemplate;
+use crate::helper_functions::dice_mechanics::dice_roller_function;
 
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 #[tauri::command]
@@ -16,10 +18,7 @@ fn greet(name: &str) -> String {
 
 #[tauri::command]
 fn roll_the_dice(amount_of_dice: Option<i32>, dice_type: Option<i32>) -> Vec<DiceTemplate> {
-    let amount = amount_of_dice.unwrap_or(1);
-    let dice_t = dice_type.unwrap_or(10);  
-
-    dice_roller_function(amount,dice_t)
+    dice_roller_function(amount_of_dice, dice_type)
 }
 
 
